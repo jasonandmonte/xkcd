@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xkcd Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text -->
+        <label for="comicId">Comic ID:</label>
+            <input type="text" id="comicId" name="comicId">
+        <h3 id="title"></h3>
+        <img id="image">
+        <p id="altText"></p>
+    </div>
+</body>
+
+<script>
+// Enter key listener ref: https://stackoverflow.com/a/46063448/7582783
+const node = document.getElementById("comicId");
+node.addEventListener("keyup", async ({key}) => {
+    if (key === "Enter") {
+        let id = node.value
+        // API Call
+        const res = await fetch(`http://localhost:8000/comics/${id}`);
+        const jsonData = await res.json();
+        console.log(jsonData)
+        
+        // update elements
+        // update title
+        let title = document.getElementById("title");
+        title.textContent = jsonData.title;
+        // update image
+        let img = document.getElementById("image");
+        image.src = jsonData.img;
+        // update alt text
+        let alt = document.getElementById("altText");
+        alt.textContent = jsonData.alt;
+    }
+});
+</script>
+</html>
