@@ -3,6 +3,7 @@
 from xkcdb import XKCDb
 from fastapi import FastAPI
 
+# uvicorn main:app --reload
 
 app = FastAPI()
 db = XKCDb("xkcd.json")
