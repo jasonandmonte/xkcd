@@ -9,7 +9,8 @@ app = FastAPI()
 db = XKCDb("xkcd.json")
 
 # NOTE: Hack to allow me to use fetch from a different "origin".
-# ref: 
+# We are just on localhost though so its not a big deal.
+# ref: https://stackoverflow.com/a/66460861/7582783
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
