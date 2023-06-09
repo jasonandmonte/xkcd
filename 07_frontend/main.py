@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 db = XKCDb("xkcd.json")
 
-# NOTE: Hack to allow me to use fetch from a different "origin".
+# NOTE: Hack to allow me to use fetch from a different port (origin).
 # We are just on localhost though so its not a big deal.
 # ref: https://stackoverflow.com/a/66460861/7582783
 origins = ["*"]
